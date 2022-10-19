@@ -1,9 +1,8 @@
 package com.financialcontrol.domain.models
 
-import com.financialcontrol.application.resources.CreateCategoryDTO
 import com.financialcontrol.domain.enums.TypeEnum
 import java.time.LocalDateTime
-import java.util.*
+import java.util.UUID
 
 data class Category(
 
@@ -18,8 +17,5 @@ data class Category(
     val createAt: LocalDateTime = LocalDateTime.now(),
 
     val updatedAt: LocalDateTime? = null
-){
-
-   
-}
+){}
 

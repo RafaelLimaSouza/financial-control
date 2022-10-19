@@ -11,8 +11,11 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable().authorizeRequests()
-            .antMatchers().permitAll()
+            .antMatchers("/h2-console/**").permitAll()
             .anyRequest().permitAll()
+
+        /* add config to h2-console */
+        http.headers().frameOptions().disable();
     }
 
 }

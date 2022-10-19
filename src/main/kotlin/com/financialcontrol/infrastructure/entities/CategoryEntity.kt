@@ -14,8 +14,8 @@ import javax.persistence.*
 data class CategoryEntity(
 
     @Id
-    @Column(updatable = false, nullable = false, unique = true)
-    val id: UUID = UUID.randomUUID(),
+    @Column(updatable = false, nullable = false, unique = true, columnDefinition = "uuid")
+    val id: UUID,
 
     @Column
     val name: String,

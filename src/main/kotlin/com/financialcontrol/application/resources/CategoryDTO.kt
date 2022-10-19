@@ -10,7 +10,7 @@ data class CategoryDTO(
     val type: String
 ){
     companion object {
-        fun to(category: Category) = CategoryDTO(
+        fun of(category: Category) = CategoryDTO(
             id = category.id,
             name = category.name,
             enabled = category.enabled,

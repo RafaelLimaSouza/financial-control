@@ -3,7 +3,6 @@ package com.financialcontrol.application.resources
 import com.financialcontrol.domain.enums.TypeEnum
 import com.financialcontrol.domain.models.Category
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotEmpty
 
 data class CreateCategoryDTO(
     @NotBlank
