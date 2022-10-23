@@ -4,7 +4,7 @@ import arrow.core.toOption
 import com.financialcontrol.UnitTest
 import com.financialcontrol.application.resources.CreateCategoryDTOBuilder
 import com.financialcontrol.domain.adapters.CategoryAdapter
-import com.financialcontrol.domain.resources.CategoryBuilder
+import com.financialcontrol.domain.builders.CategoryBuilder
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK

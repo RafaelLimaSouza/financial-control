@@ -3,13 +3,12 @@ package com.financialcontrol.application.usecases.category.findall
 import com.financialcontrol.UnitTest
 import com.financialcontrol.domain.adapters.CategoryAdapter
 import com.financialcontrol.domain.enums.TypeEnum
-import com.financialcontrol.domain.resources.CategoryBuilder
+import com.financialcontrol.domain.builders.CategoryBuilder
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 
 class FindAllCategoryServiceTest: UnitTest() {
 
@@ -33,9 +32,7 @@ class FindAllCategoryServiceTest: UnitTest() {
 
     @Test
     fun `should return a category a empty list`(){
-        val expected = CategoryBuilder().build()
-
-        every { categoryAdapter.findAll() } returns emptyList()
+         every { categoryAdapter.findAll() } returns emptyList()
 
         findAllCategoryService.execute().map {
             it.size shouldBeEqualTo 0

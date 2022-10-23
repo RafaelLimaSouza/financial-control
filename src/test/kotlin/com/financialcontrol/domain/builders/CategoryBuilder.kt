@@ -1,4 +1,4 @@
-package com.financialcontrol.domain.resources
+package com.financialcontrol.domain.builders
 
 import com.financialcontrol.domain.enums.TypeEnum
 import com.financialcontrol.domain.models.Category

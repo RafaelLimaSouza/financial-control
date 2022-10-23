@@ -3,6 +3,7 @@ package com.financialcontrol.domain.adapters
 import arrow.core.Option
 import com.financialcontrol.domain.enums.TypeEnum
 import com.financialcontrol.domain.models.Category
+import com.financialcontrol.infrastructure.entities.CategoryEntity
 import java.util.UUID
 
 interface CategoryAdapter {
@@ -10,4 +11,6 @@ interface CategoryAdapter {
     fun findAll(): List<Category>
     fun findById(id: UUID): Option<Category>
     fun findByType(type: TypeEnum): List<Category>
+
+    fun delete(category: CategoryEntity)
 }

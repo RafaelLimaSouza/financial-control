@@ -6,6 +6,7 @@ import com.financialcontrol.domain.adapters.CategoryAdapter
 import com.financialcontrol.domain.enums.TypeEnum
 import com.financialcontrol.domain.models.Category
 import com.financialcontrol.infrastructure.converters.CategoryConverter
+import com.financialcontrol.infrastructure.entities.CategoryEntity
 import com.financialcontrol.infrastructure.repositories.CategoryRepository
 import org.springframework.stereotype.Component
 import java.util.UUID
@@ -26,4 +27,8 @@ class CategoryAdapterImpl(private val categoryRepository: CategoryRepository): C
 
     override fun findByType(type: TypeEnum): List<Category> =
         categoryRepository.findByType(type).map { CategoryConverter.of(it) }
+
+    override fun delete(category: CategoryEntity) {
+        categoryRepository.delete(category)
+    }
 }

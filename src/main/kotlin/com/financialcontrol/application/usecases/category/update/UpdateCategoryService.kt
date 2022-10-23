@@ -2,6 +2,7 @@ package com.financialcontrol.application.usecases.category.update
 
 import arrow.core.Either
 import arrow.core.getOrElse
+import arrow.core.right
 import com.financialcontrol.application.resources.CategoryDTO
 import com.financialcontrol.application.resources.CreateCategoryDTO
 import com.financialcontrol.domain.adapters.CategoryAdapter
@@ -19,9 +20,9 @@ class UpdateCategoryService(private val categoryAdapter: CategoryAdapter) {
                     categoryAdapter.findById(id).map { entity ->
                         val newCategory = entity.copy(
                             id = id,
-                            name = request.name ?: entity.name,
+                            name = request.name,
                             enabled = request.enabled ?: entity.enabled,
-                            type = TypeEnum.valueOf(request.type) ?: entity.type
+                            type = TypeEnum.valueOf(request.type)
                         )
                         categoryAdapter.save(newCategory).let {
                             CategoryDTO.of(it)
@@ -29,7 +30,7 @@ class UpdateCategoryService(private val categoryAdapter: CategoryAdapter) {
                     }.getOrElse { throw Exception("Not found") }
                 }
                 .onFailure { throw Exception(it.localizedMessage) }
-                .onSuccess { it }
+                .onSuccess { it.right() }
                 .getOrThrow()
         }
 }
