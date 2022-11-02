@@ -7,14 +7,12 @@ data class CategoryDTO(
     val id: UUID,
     val name: String,
     val enabled: Boolean? = true,
-    val type: String
 ){
     companion object {
         fun of(category: Category) = CategoryDTO(
             id = category.id,
             name = category.name,
             enabled = category.enabled,
-            type = category.type.name
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.financialcontrol.findall
+package com.financialcontrol.category.findall
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.financialcontrol.AbstractIntegrationTest
@@ -15,7 +15,6 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-import kotlin.test.assertEquals
 
 @AutoConfigureMockMvc
 class FindAllCategoryIntegrationTest: AbstractIntegrationTest() {
@@ -37,7 +36,6 @@ class FindAllCategoryIntegrationTest: AbstractIntegrationTest() {
                 charset("UTF-8"))).toString())
 
                 current[0].name.shouldBeEqualTo("category")
-                current[0].type.shouldBeEqualTo("EXPENSE")
                 current[0].enabled.shouldBeEqualTo(true)
             }
     }

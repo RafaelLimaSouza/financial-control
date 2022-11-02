@@ -9,7 +9,6 @@ object CategoryConverter {
         id = category.id,
         name = category.name,
         enabled = category.enabled?.let { it } ?: true,
-        type = category.type,
         createdAt = category.createAt,
         updatedAt = category.updatedAt
     )
@@ -18,7 +17,6 @@ object CategoryConverter {
         id = category.id,
         name = category.name,
         enabled = category.enabled,
-        type = category.type,
         createAt = category.createdAt,
         updatedAt = category.updatedAt
     )

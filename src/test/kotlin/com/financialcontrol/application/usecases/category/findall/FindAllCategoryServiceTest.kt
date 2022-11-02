@@ -1,8 +1,8 @@
 package com.financialcontrol.application.usecases.category.findall
 
 import com.financialcontrol.UnitTest
+import com.financialcontrol.application.usecases.category.findall.FindAllCategoryService
 import com.financialcontrol.domain.adapters.CategoryAdapter
-import com.financialcontrol.domain.enums.TypeEnum
 import com.financialcontrol.domain.builders.CategoryBuilder
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -38,16 +38,4 @@ class FindAllCategoryServiceTest: UnitTest() {
             it.size shouldBeEqualTo 0
         }
     }
-
-    @Test
-    fun `should return a category by param`(){
-        val expected = CategoryBuilder().build()
-
-        every { categoryAdapter.findAll() } returns listOf(expected)
-
-        findAllCategoryService.execute(TypeEnum.EXPENSE.name).map {
-            it.first().id shouldBeEqualTo expected.id
-        }
-    }
-
 }

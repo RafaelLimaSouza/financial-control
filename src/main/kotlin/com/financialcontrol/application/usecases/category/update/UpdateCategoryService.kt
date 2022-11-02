@@ -6,7 +6,6 @@ import arrow.core.right
 import com.financialcontrol.application.resources.CategoryDTO
 import com.financialcontrol.application.resources.CreateCategoryDTO
 import com.financialcontrol.domain.adapters.CategoryAdapter
-import com.financialcontrol.domain.enums.TypeEnum
 import org.springframework.stereotype.Service
 import java.util.UUID
 
@@ -22,7 +21,6 @@ class UpdateCategoryService(private val categoryAdapter: CategoryAdapter) {
                             id = id,
                             name = request.name,
                             enabled = request.enabled ?: entity.enabled,
-                            type = TypeEnum.valueOf(request.type)
                         )
                         categoryAdapter.save(newCategory).let {
                             CategoryDTO.of(it)

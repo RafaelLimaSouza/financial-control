@@ -1,4 +1,4 @@
-package com.financialcontrol.findone
+package com.financialcontrol.category.findone
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.financialcontrol.AbstractIntegrationTest
@@ -40,7 +40,6 @@ class FindOneCategoryIntegrationTest: AbstractIntegrationTest() {
                 )
 
                 current.name.shouldBeEqualTo("category")
-                current.type.shouldBeEqualTo("EXPENSE")
                 current.enabled.shouldBeEqualTo(true)
             }
 

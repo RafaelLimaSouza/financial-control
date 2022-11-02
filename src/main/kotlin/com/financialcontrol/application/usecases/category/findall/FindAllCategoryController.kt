@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController
 class FindAllCategoryController(private val findAllCategoryService: FindAllCategoryService) {
 
     @GetMapping
-    fun findAll(@RequestParam(required = false) type: String? = null): ResponseEntity<List<CategoryDTO>> =
-        findAllCategoryService.execute(type).fold(
+    fun findAll(): ResponseEntity<List<CategoryDTO>> =
+        findAllCategoryService.execute().fold(
             { throw it},
             { ResponseEntity(it, HttpStatus.OK) }
         )

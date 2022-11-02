@@ -1,6 +1,5 @@
 package com.financialcontrol.domain.builders
 
-import com.financialcontrol.domain.enums.TypeEnum
 import com.financialcontrol.domain.models.Category
 import java.time.LocalDateTime
 import java.util.UUID
@@ -13,8 +12,6 @@ class CategoryBuilder {
 
     var enabled: Boolean = true
 
-    var type: TypeEnum = TypeEnum.EXPENSE
-
     var createAt: LocalDateTime = LocalDateTime.now()
 
     var updatedAt: LocalDateTime = LocalDateTime.now()
@@ -23,7 +20,6 @@ class CategoryBuilder {
         id = id,
         name = name,
         enabled = enabled,
-        type = type,
         createAt = createAt,
         updatedAt = updatedAt
     )

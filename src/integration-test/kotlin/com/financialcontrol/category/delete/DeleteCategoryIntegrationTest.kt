@@ -1,7 +1,6 @@
-package com.financialcontrol.update
+package com.financialcontrol.category.delete
 
 import com.financialcontrol.AbstractIntegrationTest
-import com.financialcontrol.application.resources.CreateCategoryDTO
 import com.financialcontrol.domain.builders.CategoryBuilder
 import com.financialcontrol.infrastructure.converters.CategoryConverter.of
 import com.financialcontrol.infrastructure.repositories.CategoryRepository
@@ -12,26 +11,38 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import java.util.UUID
 
 @AutoConfigureMockMvc
-class UpdateCategoryIntegrationTest: AbstractIntegrationTest() {
+class DeleteCategoryIntegrationTest: AbstractIntegrationTest() {
 
     @Autowired
     lateinit var categoryRepository: CategoryRepository
 
     @Test
-    fun`#should update a category`(){
-        val categoryId = categoryRepository.saveAndFlush(of(CategoryBuilder().build())).id
+    fun`#should successfully delete a category`() {
+        categoryRepository.save(of(CategoryBuilder().build()))
 
-        val data = CreateCategoryDTO(name = "new_category", type = "REVENUE")
+        val id = UUID.randomUUID()
 
-        val updateRequest = MockMvcRequestBuilders.put("/category/$categoryId")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(mapper.writeValueAsString(data))
+        val deleteRequest = MockMvcRequestBuilders.delete("/category/$id").contentType(MediaType.APPLICATION_JSON)
 
-        mockMvc.perform((updateRequest))
+        mockMvc.perform(deleteRequest)
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isNoContent)
+
+    }
+
+    @Test
+    fun`#should return status 404 when a category not exists`() {
+        val id = "e92cac2f-5b99-427a-9e69-b0f69aac2df2"
+
+        val deleteRequest = MockMvcRequestBuilders.delete("/category/$id").contentType(MediaType.APPLICATION_JSON)
+
+        mockMvc.perform(deleteRequest)
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isNotFound)
+
     }
 
 }
